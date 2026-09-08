@@ -31,23 +31,25 @@ The service provides dynamic document ingestion, context-aware conversational se
 ---
 
 ## 3. Project Structure
-``bash
+
+```text
 conversational-rag-fastapi/
 ├── app/
 │   ├── __init__.py
-│   ├── main.py              # Application entry point & API routes
-│   ├── config.py            # Environment variable loading & validation
-│   ├── database.py          # SQLAlchemy session and engine initialization
-│   ├── models.py            # Pydantic schemas & SQLAlchemy DB models
+│   ├── main.py            # FastAPI router & endpoint definitions
+│   ├── config.py          # Environment configurations
+│   ├── db.py              # Database connection setup
+│   ├── models.py          # SQLAlchemy tables & Pydantic models
 │   └── services/
 │       ├── __init__.py
-│       ├── ingestion.py     # PDF/TXT parsing and chunking logic
-│       ├── vector_store.py  # Qdrant client interactions & embeddings
-│       └── llm.py           # Gemini RAG generation, Redis memory & extraction
-├── .env.example             # Template for required environment variables
+│       ├── ingestion.py   # File extraction & chunking strategies
+│       ├── vector_store.py# Qdrant client & embedding integration
+│       ├── memory.py      # Redis session management
+│       └── chat.py        # Custom RAG engine & LLM booking extraction
+├── .env.example
 ├── .gitignore
-├── requirements.txt         # Project dependencies
-└── README.md                # System documentation
+├── requirements.txt
+└── README.md
 ```
 
 ---
