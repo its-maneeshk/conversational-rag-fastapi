@@ -8,6 +8,8 @@ from app.services.ingestion import (
     chunk_text_by_paragraph,
 )
 from app.services.vector_store import store_chunks_in_qdrant
+from app.models import ChatRequest, ChatResponse
+from app.services.llm import generate_rag_response
 
 # Create SQLite tables automatically
 Base.metadata.create_all(bind=engine)
@@ -74,3 +76,20 @@ async def ingest_document(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=str(e),
         )
+
+@app.post("/chat", response_model=ChatResponse, tags=["Conversational RAG"])
+def chat(request: ChatRequest, db: Session = Depends(get_db)):
+    """Conversational endpoint supporting RAG retrieval, history tracking, and booking extraction."""
+    try:
+        res = generate_rag_response(
+            session_id=request.session_id,
+            query=request.query,
+            db=db,
+        )
+        return ChatResponse(
+            session_id=res["session_id"],
+            response=res["response"],
+            booking_detected=res["booking_detected"],
+        )
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
