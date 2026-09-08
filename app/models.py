@@ -2,6 +2,10 @@ from datetime import datetime
 from sqlalchemy import Column, Integer, String, DateTime
 from pydantic import BaseModel, Field
 
+# Import Base from app.db
+from app.db import Base
+
+
 # ==========================================
 # 1. SQLAlchemy Database Models (Tables)
 # ==========================================
