@@ -31,7 +31,7 @@ The service provides dynamic document ingestion, context-aware conversational se
 ---
 
 ## 3. Project Structure
-
+``bash
 conversational-rag-fastapi/
 ├── app/
 │   ├── __init__.py
@@ -48,6 +48,7 @@ conversational-rag-fastapi/
 ├── .gitignore
 ├── requirements.txt         # Project dependencies
 └── README.md                # System documentation
+```
 
 ---
 
