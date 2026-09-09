@@ -10,6 +10,7 @@ __pycache__/
 # Local Database
 *.db
 *.sqlite3
+/Docs
 
 # IDE settings
 .vscode/
