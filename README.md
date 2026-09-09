@@ -1,8 +1,6 @@
-# conversational-rag-fastapi
-
 # Conversational RAG & Automated Interview Booking Service
 
-A production-grade Conversational Retrieval-Augmented Generation (RAG) backend built using FastAPI, Qdrant vector database, Google Gemini API (`gemini-3.6-flash` and `text-embedding-004`), Redis, and SQLite.
+Conversational Retrieval-Augmented Generation (RAG) backend built using FastAPI, Qdrant vector database, Google Gemini API (`gemini-3.6-flash` and `text-embedding-004`), Redis, and SQLite.
 
 The service provides dynamic document ingestion, context-aware conversational search with multi-turn memory, and automated entity extraction to parse interview booking requests directly into a relational database.
 
@@ -60,7 +58,7 @@ Create a `.env` file in the root directory based on `.env.example`:
 ```bash
 GEMINI_API_KEY="your_google_gemini_api_key"
 QDRANT_URL="http://localhost:6333"
-QDRANT_API_KEY=""
+QDRANT_API_KEY="visit https://qdrant.tech/documentation/cloud-api/ to create api key"
 REDIS_URL="redis://localhost:6379/0"
 DATABASE_URL="sqlite:///./app.db"
 ```
@@ -71,15 +69,15 @@ DATABASE_URL="sqlite:///./app.db"
 
 ### Step 1: Clone the Repository
 ```bash
-git clone <repository_url>
+git clone https://github.com/its-maneeshk/conversational-rag-fastapi.git
 cd conversational-rag-fastapi
 ```
 
 ### Step 2: Create and Activate a Virtual Environment
 * **Windows (PowerShell):**
   ```powershell
-  python -m venv .venv
-  .\.venv\Scripts\Activate.ps1
+  python -m venv .venv  <- to create isolated virtual environment
+  .\.venv\Scripts\activate <- to actiavte that isolated virtual environment
   ```
 * **Linux / macOS:**
   ```bash
@@ -89,29 +87,21 @@ cd conversational-rag-fastapi
 
 ### Step 3: Install Dependencies
 ```bash
-pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r requirements.txt  <- to install all required dependencies by this project.
 ```
 
 ---
 
-## 6. External Services (Qdrant & Redis)
-
-Ensure Qdrant and Redis instances are accessible before launching the API server.
-
-You can launch both using Docker:
-```bash
-docker run -d --name qdrant -p 6333:6333 -p 6334:6334 qdrant/qdrant
-docker run -d --name redis -p 6379:6379 redis:alpine
-```
 
 ---
 
-## 7. Running the Application
+## 6. Running the Application
 
 Start the FastAPI development server using Uvicorn:
 
 ```bash
+unicorn app.main:app --reload
+            [or]
 uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
@@ -121,22 +111,22 @@ Access API docs at:
 
 ---
 
-## 8. API Reference & Endpoint Usage
+## 7. API Reference & Endpoint Usage
 
-### 8.1 Health Check
+### 7.1 Health Check
 * **Route:** `GET /`
 * **Description:** Verifies server runtime status.
 
-### 8.2 Document Ingestion
+### 7.2 Document Ingestion
 * **Route:** `POST /ingest`
 * **Content Type:** `multipart/form-data`
 * **Parameters:** `file` (UploadFile, required), `strategy` ('fixed' or 'paragraph')
 
-### 8.3 Conversational RAG & Booking Chat
+### 7.3 Conversational RAG & Booking Chat
 * **Route:** `POST /chat`
 * **Content Type:** `application/json`
 * **Parameters:** `session_id` (string), `query` (string)
 
-### 8.4 Inspect Bookings
+### 7.4 Inspect Bookings
 * **Route:** `GET /bookings`
 * **Description:** Retrieves all interview booking records extracted from conversations and stored in SQLite.
