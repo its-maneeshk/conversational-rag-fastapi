@@ -10,6 +10,7 @@ from app.services.ingestion import (
 from app.services.vector_store import store_chunks_in_qdrant
 from app.models import ChatRequest, ChatResponse
 from app.services.llm import generate_rag_response
+from app.models import InterviewBooking
 
 # Create SQLite tables automatically
 Base.metadata.create_all(bind=engine)
@@ -93,3 +94,9 @@ def chat(request: ChatRequest, db: Session = Depends(get_db)):
         )
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
+@app.get("/bookings", tags=["Bookings"])
+def get_all_bookings(db: Session = Depends(get_db)):
+    """Retrieve all extracted interview bookings stored in SQLite."""
+    bookings = db.query(InterviewBooking).all()
+    return {"count": len(bookings), "bookings": bookings}
