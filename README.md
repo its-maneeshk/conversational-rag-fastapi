@@ -92,9 +92,6 @@ pip install -r requirements.txt  <- to install all required dependencies by this
 
 ---
 
-
----
-
 ## 6. Running the Application
 
 Start the FastAPI development server using Uvicorn:
@@ -126,6 +123,7 @@ Access API docs at:
 * **Route:** `POST /chat`
 * **Content Type:** `application/json`
 * **Parameters:** `session_id` (string), `query` (string)
+* **Description:** Conversation about document ingested and Booking slot on prefered time & date.
 
 ### 7.4 Inspect Bookings
 * **Route:** `GET /bookings`
