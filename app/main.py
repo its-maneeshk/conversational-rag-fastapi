@@ -17,7 +17,7 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Conversational RAG API",
-    description="Palm Mind Internship Technical Assessment Service",
+    description="Conversational RAG & Automated Interview Booking Service",
     version="1.0.0",
 )
 
