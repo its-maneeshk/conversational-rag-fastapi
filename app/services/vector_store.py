@@ -11,7 +11,7 @@ qdrant = QdrantClient(url=settings.QDRANT_URL, api_key=settings.QDRANT_API_KEY)
 genai_client = genai.Client(api_key=settings.GEMINI_API_KEY)
 
 COLLECTION_NAME = "palmmind_documents"
-EMBEDDING_MODEL = "gemini-embedding-001"
+EMBEDDING_MODEL = "gemini-embedding-001" 
 VECTOR_SIZE = 768
 
 

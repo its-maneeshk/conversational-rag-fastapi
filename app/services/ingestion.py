@@ -4,7 +4,7 @@ from pypdf import PdfReader
 
 def extract_text_from_file(file_bytes: bytes, filename: str) -> str:
     """Extract raw text content from uploaded PDF or TXT files."""
-    filename_lower = filename.lower()
+    filename_lower = filename.lower() 
 
     if filename_lower.endswith(".pdf"):
         reader = PdfReader(BytesIO(file_bytes))

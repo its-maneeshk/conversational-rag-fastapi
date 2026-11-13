@@ -14,7 +14,7 @@ try:
     USE_REDIS = True
 except Exception:
     USE_REDIS = False
-    in_memory_history: Dict[str, List[Dict[str, str]]] = {}
+    in_memory_history: Dict[str, List[Dict[str, str]]] = {} 
 
 
 def call_gemini_with_retry(prompt: str, retries: int = 3, delay: int = 2) -> str:

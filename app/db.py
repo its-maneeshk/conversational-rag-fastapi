@@ -7,7 +7,7 @@ from app.config import settings
 engine = create_engine(
     settings.SQLITE_URL,
     connect_args={"check_same_thread": False} if "sqlite" in settings.SQLITE_URL else {},
-)
+) 
 
 # Session factory
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

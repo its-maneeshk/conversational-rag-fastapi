@@ -5,7 +5,7 @@ from app.models import DocumentMetadata, IngestResponse
 from app.services.ingestion import (
     extract_text_from_file,
     chunk_text_fixed_size,
-    chunk_text_by_paragraph,
+    chunk_text_by_paragraph, 
 )
 from app.services.vector_store import store_chunks_in_qdrant
 from app.models import ChatRequest, ChatResponse
