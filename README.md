@@ -1,4 +1,4 @@
-# Conversational RAG & Automated Interview Booking Service
+# Conversational RAG & Automated Interview Booking Service 
 
 Conversational Retrieval-Augmented Generation (RAG) backend built using FastAPI, Qdrant vector database, Google Gemini API (`gemini-3.6-flash` and `text-embedding-004`), Redis, and SQLite.
 
